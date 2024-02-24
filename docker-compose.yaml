@@ -11,5 +11,7 @@ services:
     environment:
       - Name=Dipak
       - Age=28
+    env_file:
+      - env.txt
   redis:
     image: "redis:alpine"
