@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - PYTHON_VERSION=3.10-alpine
+        - PYTHON_VERSION=${PYTHON_VERSION}
     image: python-radis
     ports:
       - "8000:5000"
@@ -14,4 +14,4 @@ services:
     env_file:
       - env.txt
   redis:
-    image: "redis:alpine"
+    image: ${REDIS_IMAGE}
