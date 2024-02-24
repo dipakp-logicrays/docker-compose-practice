@@ -1,6 +1,11 @@
 services:
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - PYTHON_VERSION=3.10-alpine
+    image: python-radis
     ports:
       - "8000:5000"
   redis:
