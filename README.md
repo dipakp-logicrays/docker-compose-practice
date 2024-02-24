@@ -346,6 +346,12 @@ container:
 $ docker compose down --volumes
 ```
 
+Run docker compose with environment
+
+```console
+$ docker compose exec <service_name> env
+```
+
 ## Where to go next
 
 - Try the [Sample apps with Compose](https://github.com/docker/awesome-compose)

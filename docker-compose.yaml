@@ -8,5 +8,8 @@ services:
     image: python-radis
     ports:
       - "8000:5000"
+    environment:
+      - Name=Dipak
+      - Age=28
   redis:
     image: "redis:alpine"
