@@ -16,8 +16,8 @@ The concepts demonstrated here should be understandable even if you're not famil
 ## Prerequisites
 
 You need to have Docker Engine and Docker Compose on your machine. You can either:
-- Install [Docker Engine](../get-docker.md) and [Docker Compose](install/index.md) as standalone binaries
-- Install [Docker Desktop](../desktop/index.md) which includes both Docker Engine and Docker Compose
+- Install [Docker Engine](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) as standalone binaries
+- Install [Docker Desktop](https://docs.docker.com/desktop/) which includes both Docker Engine and Docker Compose
 
 You don't need to install Python or Redis, as both are provided by Docker images.
 
@@ -93,7 +93,7 @@ FROM python:3.10-alpine
 WORKDIR /code
 ENV FLASK_APP=app.py
 ENV FLASK_RUN_HOST=0.0.0.0
-RUN apk add --no-cache gcc musl-dev linux-headers
+#RUN apk add --no-cache gcc musl-dev linux-headers
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 EXPOSE 5000
@@ -118,8 +118,8 @@ This tells Docker to:
 { .important }
 
 For more information on how to write Dockerfiles, see the
-[Docker user guide](../develop/index.md)
-and the [Dockerfile reference](/reference/dockerfile/).
+[Docker user guide](https://docs.docker.com/develop/)
+and the [Dockerfile reference](https://docs.docker.com/reference/dockerfile/).
 
 
 ## Step 3: Define services in a Compose file
@@ -185,7 +185,7 @@ image pulled from the Docker Hub registry.
    Hello World! I have been seen 1 times.
    ```
 
-   ![hello world in browser](images/quick-hello-world-1.png)
+   ![hello world in browser](https://docs.docker.com/compose/images/quick-hello-world-1.png)
 
 3. Refresh the page.
 
@@ -195,7 +195,7 @@ image pulled from the Docker Hub registry.
    Hello World! I have been seen 2 times.
    ```
 
-   ![hello world in browser](images/quick-hello-world-2.png)
+   ![hello world in browser](https://docs.docker.com/compose/images/quick-hello-world-2.png)
 
 4. Switch to another terminal window, and type `docker image ls` to list local images.
 
@@ -219,7 +219,7 @@ image pulled from the Docker Hub registry.
 ## Step 5: Edit the Compose file to add a bind mount
 
 Edit the `compose.yaml` file in your project directory to add a
-[bind mount](../storage/bind-mounts.md) for the `web` service:
+[bind mount](https://docs.docker.com/storage/bind-mounts/) for the `web` service:
 
 ```yaml
 services:
@@ -261,27 +261,6 @@ web_1    |  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 Check the `Hello World` message in a web browser again, and refresh to see the
 count increment.
 
-> Shared folders, volumes, and bind mounts
->
-> * If your project is outside of the `Users` directory (`cd ~`), then you
-need to share the drive or location of the Dockerfile and volume you are using.
-If you get runtime errors indicating an application file is not found, a volume
-mount is denied, or a service cannot start, try enabling file or drive sharing.
-Volume mounting requires shared drives for projects that live outside of
-`C:\Users` (Windows) or `/Users` (Mac), and is required for _any_ project on
-Docker Desktop for Mac and Docker Desktop for Windows that uses
-[Linux containers](../desktop/faqs/windowsfaqs.md#how-do-i-switch-between-windows-and-linux-containers).
-For more information, see
-[File sharing on Docker for Mac](../desktop/settings/mac.md#file-sharing),
-[File sharing on Docker for Windows](../desktop/settings/windows.md#file-sharing), [File sharing on Docker for Linux](../desktop/settings/linux.md#file-sharing).
-and the general examples on how to
-> [Manage data in containers](../storage/volumes.md).
->
-> * If you are using Oracle VirtualBox on an older Windows OS, you might encounter an issue with shared folders as described in this [VB trouble
-ticket](https://www.virtualbox.org/ticket/14920). Newer Windows systems meet the
-requirements for [Docker Desktop for Windows](../desktop/install/windows-install.md) and do not
-need VirtualBox.
-{ .important }
 
 ## Step 7: Update the application
 
@@ -299,7 +278,7 @@ return 'Hello from Docker! I have been seen {} times.\n'.format(count)
 Refresh the app in your browser. The greeting should be updated, and the
 counter should still be incrementing.
 
-![hello world in browser](images/quick-hello-world-3.png)
+![hello world in browser](https://docs.docker.com/compose/images/quick-hello-world-3.png)
 
 ## Step 8: Experiment with some other commands
 
@@ -345,16 +324,3 @@ container:
 ```console
 $ docker compose down --volumes
 ```
-
-Run docker compose with environment
-
-```console
-$ docker compose exec <service_name> env
-```
-
-## Where to go next
-
-- Try the [Sample apps with Compose](https://github.com/docker/awesome-compose)
-- [Explore the full list of Compose commands](reference/index.md)
-- [Explore the Compose file reference](compose-file/index.md)
-- To learn more about volumes and bind mounts, see [Manage data in Docker](../storage/index.md)
